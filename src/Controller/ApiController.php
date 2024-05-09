@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace App\Controller;
+namespace src\Controller;
 
 use Cake\Controller\Component;
 use RestApi\Controller\Component\ApiRestCorsComponent;
