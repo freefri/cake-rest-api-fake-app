@@ -2,8 +2,9 @@
 
 declare(strict_types = 1);
 
-namespace src\Controller;
+namespace App\Controller;
 
+use App\Controller\Component\OAuthServerComponent;
 use Cake\Controller\Component;
 use RestApi\Controller\Component\ApiRestCorsComponent;
 use RestApi\Controller\RestApiController;
@@ -17,7 +18,8 @@ class ApiController extends RestApiController
 
     protected function _loadOAuthServerComponent(): Component
     {
-        // TODO: Implement _loadOAuthServerComponent() method.
+        $this->loadComponentFromClass(OAuthServerComponent::class);
+        return $this->OAuthServer;
     }
 
     protected function _setUserLang(): void
