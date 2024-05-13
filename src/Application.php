@@ -24,7 +24,6 @@ class Application extends BaseApplication
 
         // Load more plugins here
         $this->addPlugin('Migrations');
-        $this->addPlugin(\Profile\ProfilePlugin::class);
     }
 
     public function middleware(MiddlewareQueue $middlewareQueue): MiddlewareQueue
