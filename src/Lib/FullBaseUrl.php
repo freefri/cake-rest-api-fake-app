@@ -2,8 +2,6 @@
 
 namespace App\Lib;
 
-use Cake\Http\Exception\NotImplementedException;
-
 class FullBaseUrl
 {
     public static function host(): string
@@ -16,6 +14,6 @@ class FullBaseUrl
             }
             return $scheme . $_SERVER['HTTP_HOST'];
         }
-        throw new NotImplementedException('Not implemented for commands');
+        return 'http://command.or.test.example.com';
     }
 }
