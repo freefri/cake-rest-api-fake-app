@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace App\Controller;
 
 use App\Controller\Component\OAuthServerComponent;
+use App\Lib\I18n\LegacyI18n;
 use Cake\Controller\Component;
 use RestApi\Controller\Component\ApiRestCorsComponent;
 use RestApi\Controller\RestApiController;
@@ -27,7 +28,15 @@ class ApiController extends RestApiController
 
     protected function _setUserLang(): void
     {
-        // TODO: Implement _setUserLang() method.
+        LegacyI18n::setDefaultLocale();
+        $lang = $this->getRequest()->getHeader('Accept-Language');
+        if ($lang && isset($lang[0]) && $lang[0]) {
+            try {
+                LegacyI18n::setLocale($lang[0]);
+            } catch (\Exception $exception) {
+                LegacyI18n::setDefaultLocale();
+            }
+        }
     }
 
     protected function _setLanguage(): void
