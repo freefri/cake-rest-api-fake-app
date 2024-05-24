@@ -13,10 +13,10 @@ use Cake\Event\Event;
 use Cake\Event\EventInterface;
 use Cake\Http\Exception\BadRequestException;
 
-class OAuthServerComponent extends Component
+class BaseOAuthServerComponent extends Component
 {
     /** @var OAuthServer */
-    private $server;
+    protected $server;
 
     private $_skipAuth = false;
 
