@@ -9,6 +9,9 @@ use Cake\Controller\Component;
 use RestApi\Controller\Component\ApiRestCorsComponent;
 use RestApi\Controller\RestApiController;
 
+/**
+ * @property OAuthServerComponent $OAuthServer
+ */
 class ApiController extends RestApiController
 {
     protected function _loadCorsComponent(): ApiRestCorsComponent

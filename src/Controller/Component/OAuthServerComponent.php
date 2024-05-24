@@ -27,8 +27,14 @@ class OAuthServerComponent extends BaseOAuthServerComponent
     {
         return [];
     }
+
     public function checkUserBelongsToSme($token, $smeId, $userId): bool
     {
         throw new ForbiddenException('This user does not belong to manager');
+    }
+
+    public function getTrainerParent()
+    {
+        return false;
     }
 }
