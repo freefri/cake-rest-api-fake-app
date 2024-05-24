@@ -4,12 +4,7 @@ declare(strict_types = 1);
 
 namespace App\Controller\Component;
 
-use Cake\Controller\Component;
-use Cake\Controller\ComponentRegistry;
-use Cake\Controller\Controller;
-use Cake\Event\Event;
-use Cake\Event\EventInterface;
-use Cake\Http\Exception\BadRequestException;
+use Cake\Http\Exception\ForbiddenException;
 
 class OAuthServerComponent extends BaseOAuthServerComponent
 {
@@ -21,5 +16,19 @@ class OAuthServerComponent extends BaseOAuthServerComponent
     public function isSmeUser(): bool
     {
         return $this->server->isSmeUser();
+    }
+
+    public function isTrainerUser(): bool
+    {
+        return $this->server->isTrainerUser();
+    }
+
+    public function getUserIdsBySme(string $token, $smeId): array
+    {
+        return [];
+    }
+    public function checkUserBelongsToSme($token, $smeId, $userId): bool
+    {
+        throw new ForbiddenException('This user does not belong to manager');
     }
 }
