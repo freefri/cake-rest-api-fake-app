@@ -22,4 +22,17 @@ class UsersTable extends RestApiTable
     {
         return [];
     }
+
+    public function getForLti($uid): array
+    {
+        return [
+            'user_id' => $uid,
+            'name' => 'Arnold Schwartz',
+            'family_name' => 'Schwartz',
+            'given_name' => 'Arnold',
+            'https://purl.imsglobal.org/spec/lti/claim/roles' => [],
+            'https://purl.imsglobal.org/spec/lti/claim/custom' => [],
+            'https://purl.imsglobal.org/spec/lti/claim/context' => [],
+        ];
+    }
 }
