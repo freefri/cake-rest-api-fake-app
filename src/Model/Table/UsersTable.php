@@ -2,6 +2,7 @@
 
 namespace App\Model\Table;
 
+use Cake\Http\Exception\NotImplementedException;
 use RestApi\Model\Table\RestApiTable;
 
 class UsersTable extends RestApiTable
@@ -34,5 +35,13 @@ class UsersTable extends RestApiTable
             'https://purl.imsglobal.org/spec/lti/claim/custom' => [],
             'https://purl.imsglobal.org/spec/lti/claim/context' => [],
         ];
+    }
+
+    public function checkLogin(array $data)
+    {
+        if (!$data) {
+            return [];
+        }
+        throw new NotImplementedException('User->checkLogin must be mocked');
     }
 }

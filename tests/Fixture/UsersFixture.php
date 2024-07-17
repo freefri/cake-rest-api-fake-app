@@ -12,6 +12,7 @@ class UsersFixture extends RestApiFixture
     const ADMIN_ID = 1;
     const SELLER_ID = 2;
     const BUYER_ID = 3;
+    public const USER_ADMIN_EMAIL = 'admin@example.com';
 
     public $records = [
         [
@@ -37,7 +38,7 @@ class UsersFixture extends RestApiFixture
         ],
         [
             'id' => self::ADMIN_ID,
-            'email' => 'admin@example.com',
+            'email' => self::USER_ADMIN_EMAIL,
             'firstname' => 'Admi',
             'lastname' => 'Nistrator',
             'password' => '$2y$10$1cCayk8qquFFWyvk161qZuOm4kgLFbmg4O1ItVQ5Qt.w3V28VNUk2',
