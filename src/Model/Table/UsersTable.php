@@ -2,7 +2,9 @@
 
 namespace App\Model\Table;
 
-use Cake\Http\Exception\NotImplementedException;
+use Cake\Auth\DefaultPasswordHasher;
+use Cake\Http\Exception\BadRequestException;
+use Cake\Http\Exception\UnauthorizedException;
 use RestApi\Model\Table\RestApiTable;
 
 class UsersTable extends RestApiTable
@@ -39,9 +41,23 @@ class UsersTable extends RestApiTable
 
     public function checkLogin(array $data)
     {
-        if (!$data) {
-            return [];
+        $email = $data['username'] ?? '';
+        if (!$email) {
+            throw new BadRequestException('Username is required');
         }
-        throw new NotImplementedException('User->checkLogin must be mocked');
+        $pass = $data['password'] ?? '';
+        if (!$pass) {
+            throw new BadRequestException('Password is required');
+        }
+        $usr = $this->find()
+            ->where(['email' => $email])
+            ->first();
+        if (!$usr) {
+            throw new UnauthorizedException('User not found ' . $email);
+        }
+        if (!(new DefaultPasswordHasher)->check($pass, $usr->password)) {
+            throw new UnauthorizedException('Invalid password');
+        }
+        return $usr;
     }
 }
