@@ -26,6 +26,16 @@ class UsersTable extends RestApiTable
         return [];
     }
 
+    public function getUserByEmailOrNew(array $data)
+    {
+        $usr = $this->find()->where(['email' => $data['email']])->first();
+        if (!$usr) {
+            $usr = $this->newEmptyEntity();
+            $usr = $this->patchEntity($usr, $data);
+        }
+        return $usr;
+    }
+
     public function getForLti($uid): array
     {
         return [
