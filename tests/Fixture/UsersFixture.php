@@ -14,7 +14,7 @@ class UsersFixture extends RestApiFixture
     const BUYER_ID = 3;
     public const USER_ADMIN_EMAIL = 'admin@example.com';
 
-    public $records = [
+    public array $records = [
         [
             'id' => self::SELLER_ID,
             'email' => 'seller@example.com',

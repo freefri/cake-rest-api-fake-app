@@ -4,10 +4,11 @@
   "type": "project",
   "license": "MIT",
   "require": {
-    "php": ">=7.2",
+    "php": ">=8.2",
     "cakephp/cakephp": ">=4.3 || >=5.0"
   },
   "require-dev": {
+    "freefri/cake-rest-api": "*",
     "phpunit/phpunit": "^8.5 || ^9.3 || ^10.1"
   },
   "autoload": {

@@ -8,7 +8,7 @@ use Cake\ORM\Entity;
 
 class User extends Entity
 {
-    protected $_hidden = [
+    protected array $_hidden = [
         'deleted',
         'password',
         'access_level',

@@ -22,7 +22,7 @@ class ApiController extends RestApiController
 
     protected function _loadOAuthServerComponent(): Component
     {
-        $this->loadComponentFromClass(OAuthServerComponent::class);
+        $this->OAuthServer = $this->loadComponentFromClass(OAuthServerComponent::class);
         return $this->OAuthServer;
     }
 

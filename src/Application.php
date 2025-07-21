@@ -20,9 +20,13 @@ class Application extends BaseApplication
     {
         if (PHP_SAPI === 'cli') {
             $this->bootstrapCli();
+        } else {
+            $this->addPlugin('Migrations');
         }
+    }
 
-        // Load more plugins here
+    protected function bootstrapCli()
+    {
         $this->addPlugin('Migrations');
     }
 
@@ -46,17 +50,6 @@ class Application extends BaseApplication
 
     public function routes(RouteBuilder $routes): void
     {
-    }
-
-    protected function bootstrapCli()
-    {
-        try {
-            $this->addPlugin('Bake');
-        } catch (MissingPluginException $e) {
-            // Do not halt if the plugin is missing
-        }
-
-        $this->addPlugin('Migrations');
     }
 
     public function services(ContainerInterface $container): void
