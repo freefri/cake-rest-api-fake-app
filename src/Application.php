@@ -5,7 +5,6 @@ namespace App;
 
 use Cake\Core\Configure;
 use Cake\Core\ContainerInterface;
-use Cake\Core\Exception\MissingPluginException;
 use Cake\Error\Middleware\ErrorHandlerMiddleware;
 use Cake\Http\BaseApplication;
 use Cake\Http\Middleware\BodyParserMiddleware;
@@ -22,6 +21,13 @@ class Application extends BaseApplication
             $this->bootstrapCli();
         } else {
             $this->addPlugin('Migrations');
+        }
+
+        $pluginName = Configure::read('MainPlugin.name');
+        if ($pluginName) {
+            if (!$this->getPlugins()->has($pluginName)) {
+                $this->addPlugin($pluginName);
+            }
         }
     }
 
